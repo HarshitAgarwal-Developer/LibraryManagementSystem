@@ -1,0 +1,39 @@
+create database lib;
+use lib;
+
+create table student
+(sid int(5) not null primary key,
+fname varchar(30) not null,
+Lname varchar(30) not null,
+email varchar(60) not null,
+num bigint(30) not null,
+uname varchar(30) not null unique key,
+pass varchar(30) not null);
+
+
+create table book
+(booknumber bigint(25) not null primary key,
+bookname varchar(60) not null,
+author varchar(60) not null,
+type varchar(1000) not null);	
+
+insert into book values(1,'50 Shades','qweras','Novel');
+insert into book values(2,' Shades','mnzcbv','Novel');
+
+create table admin(
+adminId int(5) not null primary key,
+adminName varchar(80) not null,
+adminPass varchar(80) not null);
+
+insert into admin values(1,'harshit','admin');
+
+
+create table issuebook(
+userid int(5) not null unique key,
+bookid int(5) not null primary key,
+bookname varchar(80) not null,
+author varchar(80) not null,
+type varchar(1000) not null,
+issuedate date not null,
+duedate date not null,
+foreign key(userid) references student(sid));
